@@ -17,6 +17,10 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: user
       DB_PASSWORD: secret
+      SESSION_DRIVER: file
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - laravel
     expose:
@@ -44,7 +48,8 @@ services:
     volumes:
       - ./laravel-job-runner:/var/www
     depends_on:
-      - app
+      db:
+        condition: service_healthy
     networks:
       - laravel
 
@@ -62,10 +67,14 @@ services:
       - dbdata:/var/lib/mysql
     networks:
       - laravel
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   laravel:
 
 volumes:
   dbdata:
-

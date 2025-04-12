@@ -1,0 +1,47 @@
+name: CI/CD for Laravel with Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laravel
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent" \
+          --health-interval 10s \
+          --health-timeout 5s \
+          --health-retries 3
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Docker images
+      run: |
+        docker compose -f docker-compose.yml -f docker-compose.override.yml build
+
+    - name: Run Laravel tests
+      run: |
+        docker compose -f docker-compose.yml up -d db
+        sleep 20
+        docker compose exec -T app php artisan migrate
+        docker compose exec -T app php artisan test
+
+    - name: Deploy to Production (via SSH or rsync)
+      if: github.ref == 'refs/heads/main'
+      run: echo "🚀 Add your deployment logic here (e.g. rsync, scp, GitHub Deployments, etc.)"
