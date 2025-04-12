@@ -1,0 +1,50 @@
+2025-04-12 10:33:06,541 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-12 10:33:06,544 INFO supervisord started with pid 1
+2025-04-12 10:33:07,546 INFO spawned: 'worker1' with pid 7
+2025-04-12 10:33:07,547 INFO spawned: 'worker2' with pid 8
+2025-04-12 10:33:08,549 INFO success: worker1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:33:08,549 INFO success: worker2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:33:43,589 WARN received SIGTERM indicating exit request
+2025-04-12 10:33:43,589 INFO waiting for worker1, worker2 to die
+2025-04-12 10:33:43,590 WARN stopped: worker2 (terminated by SIGTERM)
+2025-04-12 10:33:44,592 WARN stopped: worker1 (terminated by SIGTERM)
+2025-04-12 10:34:34,963 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-12 10:34:34,964 INFO supervisord started with pid 1
+2025-04-12 10:34:35,967 INFO spawned: 'worker1' with pid 7
+2025-04-12 10:34:35,970 INFO spawned: 'worker2' with pid 8
+2025-04-12 10:34:36,972 INFO success: worker1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:34:36,972 INFO success: worker2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:36:52,111 WARN received SIGTERM indicating exit request
+2025-04-12 10:36:52,112 INFO waiting for worker1, worker2 to die
+2025-04-12 10:36:52,114 WARN stopped: worker2 (terminated by SIGTERM)
+2025-04-12 10:36:52,115 WARN stopped: worker1 (terminated by SIGTERM)
+2025-04-12 10:37:06,180 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-12 10:37:06,182 INFO supervisord started with pid 1
+2025-04-12 10:37:07,185 INFO spawned: 'worker1' with pid 7
+2025-04-12 10:37:07,188 INFO spawned: 'worker2' with pid 8
+2025-04-12 10:37:08,190 INFO success: worker1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:37:08,190 INFO success: worker2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:37:59,248 WARN received SIGTERM indicating exit request
+2025-04-12 10:37:59,248 INFO waiting for worker1, worker2 to die
+2025-04-12 10:37:59,249 WARN stopped: worker2 (terminated by SIGTERM)
+2025-04-12 10:37:59,250 WARN stopped: worker1 (terminated by SIGTERM)
+2025-04-12 10:38:16,660 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-12 10:38:16,662 INFO supervisord started with pid 1
+2025-04-12 10:38:17,664 INFO spawned: 'worker1' with pid 7
+2025-04-12 10:38:17,665 INFO spawned: 'worker2' with pid 8
+2025-04-12 10:38:18,666 INFO success: worker1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:38:18,666 INFO success: worker2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:43:57,010 WARN received SIGTERM indicating exit request
+2025-04-12 10:43:57,010 INFO waiting for worker1, worker2 to die
+2025-04-12 10:43:57,011 WARN stopped: worker2 (terminated by SIGTERM)
+2025-04-12 10:43:57,011 WARN stopped: worker1 (terminated by SIGTERM)
+2025-04-12 10:43:57,898 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-12 10:43:57,900 INFO supervisord started with pid 1
+2025-04-12 10:43:58,903 INFO spawned: 'worker1' with pid 7
+2025-04-12 10:43:58,907 INFO spawned: 'worker2' with pid 8
+2025-04-12 10:43:59,908 INFO success: worker1 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:43:59,909 INFO success: worker2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-12 10:44:38,950 WARN received SIGTERM indicating exit request
+2025-04-12 10:44:38,950 INFO waiting for worker1, worker2 to die
+2025-04-12 10:44:38,952 WARN stopped: worker2 (terminated by SIGTERM)
+2025-04-12 10:44:38,954 WARN stopped: worker1 (terminated by SIGTERM)
