@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: ./laravel-job-runner
+      dockerfile: docker/Dockerfile.runner
+    container_name: laravel-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./laravel-job-runner:/var/www
+    depends_on:
+      - db
+    networks:
+      - laravel
+
+  worker:
+    build:
+      context: ./laravel-job-runner
+      dockerfile: docker/worker/Dockerfile
+    container_name: laravel-worker
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./laravel-job-runner:/var/www
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    container_name: laravel-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+
+volumes:
+  dbdata:
