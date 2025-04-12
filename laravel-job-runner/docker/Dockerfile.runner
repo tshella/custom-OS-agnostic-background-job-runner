@@ -1,0 +1,10 @@
+FROM php:8.2-cli
+
+WORKDIR /app
+
+COPY . /app
+RUN apt-get update && docker-php-ext-install pdo pdo_mysql
+RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN composer install --no-dev
+
+CMD ["php", "worker.php"]
