@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: custom-laravel-job-runner-app
+  tag: latest
+
+env:
+  APP_ENV: production
+  APP_URL: https://your-domain.com
+  DB_HOST: laravel-mysql
+  DB_DATABASE: laravel
+  DB_USERNAME: user
+  SESSION_DRIVER: file
+  LOG_CHANNEL: stack

@@ -1,7 +1,15 @@
 # Makefile for Laravel Job Runner
 
+APP_NAME := Laravel Job Runner
+MAIL_TO := you@example.com
+MAIL_SUBJECT := "$(APP_NAME) Deployed"
+MAIL_BODY := "$(APP_NAME) successfully deployed at $$(date)"
+
 up:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
+
+prod:
+	docker-compose -f docker-compose.prod.yml up --build -d && make notify
 
 down:
 	docker-compose down -v --remove-orphans
@@ -23,3 +31,9 @@ nginx-logs:
 
 ps:
 	docker ps
+
+cert:
+	docker-compose -f docker-compose.prod.yml run --rm certbot
+
+notify:
+	echo "$(MAIL_BODY)" | mail -s "$(MAIL_SUBJECT)" $(MAIL_TO)

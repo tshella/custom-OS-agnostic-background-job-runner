@@ -136,6 +136,40 @@ make test
 
 ---
 
+## Deployment
+
+chmod +x deploy.sh
+
+# Local dev
+./deploy.sh dev
+
+# Production
+./deploy.sh prod
+
+# SSL via Certbot
+./deploy.sh cert
+
+# Logs
+./deploy.sh logs
+
+# Stop all
+./deploy.sh stop
+
+# Restart dev
+./deploy.sh restart
+
+## Deploy to Swarm
+
+# Initialize Swarm (if not already)
+docker swarm init
+
+# Deploy the stack
+docker stack deploy -c docker-stack.yml jobrunner
+
+## Deploy to Kubernetese
+
+kubectl apply -f k8s/
+
 ## Questions or Contributions?
 Feel free to fork and PR improvements. For issues, create a GitHub Issue on this repo.
 

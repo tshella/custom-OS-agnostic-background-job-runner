@@ -1,0 +1,19 @@
+apiVersion: v2
+name: laravel-job-runner
+version: 0.1.0
+description: A Laravel-based background job runner with workers and MySQL
+keywords:
+  - laravel
+  - background-jobs
+  - php
+  - mysql
+  - helm
+home: https://easypeasy.com
+maintainers:
+  - name: Manaka Anthony Raphasha
+    email: anthony@easypeasy.com
+sources:
+  - https://github.com/your-org/laravel-job-runner
+icon: https://laravel.com/img/logotype.min.svg
+annotations:
+  category: Application
