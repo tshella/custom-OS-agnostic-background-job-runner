@@ -4,14 +4,36 @@ services:
   app:
     build:
       context: ./laravel-job-runner
-      dockerfile: docker/Dockerfile.runner
+      dockerfile: docker/php/Dockerfile
     container_name: laravel-app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
       - ./laravel-job-runner:/var/www
+    environment:
+      APP_ENV: local
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: user
+      DB_PASSWORD: secret
+    networks:
+      - laravel
+    expose:
+      - "9000" # FPM port
+
+  nginx:
+    image: nginx:alpine
+    container_name: laravel-nginx
+    restart: unless-stopped
     depends_on:
-      - db
+      - app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./laravel-job-runner:/var/www
+      - ./laravel-job-runner/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - laravel
 

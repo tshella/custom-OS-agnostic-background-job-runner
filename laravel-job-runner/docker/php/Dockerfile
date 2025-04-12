@@ -1,13 +1,21 @@
-FROM php:8.2-cli
+FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www
 
-RUN apt-get update && apt-get install -y \
-    git unzip curl libzip-dev zip && \
-    docker-php-ext-install pdo pdo_mysql zip
+RUN apk add --no-cache \
+    git curl unzip libzip-dev zip oniguruma-dev \
+    && docker-php-ext-install pdo pdo_mysql zip \
+    && rm -rf /var/cache/apk/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader
+
 COPY . .
 
-RUN composer install
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["php-fpm"]
